@@ -71,6 +71,7 @@ class LoopClosingDetector
       }
 
       ROS_INFO_STREAM("Processing image " << cur_id_ << " with timestamp " << timestamp);
+      cur_id_++;
 
       // Save the time
       time_hist_.push_back(timestamp);
@@ -80,14 +81,12 @@ class LoopClosingDetector
       getImages(*l_img_msg, *r_img_msg, *l_info_msg, *r_info_msg, l_img, r_img);
 
       // Save this node for loop closure detection
-      lc_.setNode(l_img, r_img, boost::lexical_cast<string>(cur_id_));
-      cur_id_++;
+      lc_.setNode(l_img, r_img);
 
       // Detect loop closure
       int lc_img_id;
-      string lc_img_name;
       tf::Transform edge;
-      if (!lc_.getLoopClosure(lc_img_id, lc_img_name, edge)) return;
+      if (!lc_.getLoopClosure(lc_img_id, edge)) return;
 
       // Save images
       std::stringstream l_ss, r_ss;
