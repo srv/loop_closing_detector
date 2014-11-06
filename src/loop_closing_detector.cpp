@@ -205,7 +205,7 @@ class LoopClosingDetector
       lc_params.verbose = true;
       nh_private_.param("desc_type", lc_params.desc_type, string("SIFT"));
       nh_private_.getParam("desc_thresh_ratio", lc_params.desc_thresh_ratio);
-      nh_private_.getParam("min_neighbour", lc_params.min_neighbour);
+      nh_private_.getParam("min_neighbor", lc_params.min_neighbor);
       nh_private_.getParam("n_candidates", lc_params.n_candidates);
       nh_private_.getParam("min_matches", lc_params.min_matches);
       nh_private_.getParam("min_inliers", lc_params.min_inliers);
